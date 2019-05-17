@@ -16,6 +16,9 @@
 public class DCMultiply {
 
 
+    // this algorithm uses recursion:
+    // when there is only a single digit number, uses the normal ^^ * ^^ operation, else use this formula above:
+    // x·y = (10n/2a+b)·(10n/2c+d) = 10nac+10n/2(ad+bc)+bd.
     public static int divideAndConquer(int x, int y) {
         int length = getLength(x);
         if ((x >= 0 && x <= 9) && (y >= 0 && y <= 9)) {
@@ -26,6 +29,7 @@ public class DCMultiply {
                 + generateSecond(x) * generateSecond(y));
     }
 
+    // get the number of digits of a number
     private static int getLength(int number) {
         int length = 0;
         while (!(number <= 9)) {
@@ -36,6 +40,7 @@ public class DCMultiply {
     }
 
 
+    // to compute the value of a OR c in the second doc above
     private static int generateFirst(int number) {
         int length = getLength(number);
         if (length % 2 == 0) {
@@ -44,6 +49,7 @@ public class DCMultiply {
         return number / (int) (Math.pow(10, length / 2 + 1));
     }
 
+    // to compute the value of b OR d in the second doc above
     private static int generateSecond(int number) {
         int length = getLength(number);
         if (length % 2 == 0) {
@@ -53,6 +59,7 @@ public class DCMultiply {
     }
 
 
+    // use this to test my code implementation
     public static void main(String[] args) {
         int a = 10;
         int b = 9;
